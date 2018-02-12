@@ -24,3 +24,6 @@
 
 #Ignore the RubyMine config folder
 /.idea/*
+
+#Ignore user-specific:
+/.idea/**/workspace.xml
