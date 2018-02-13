@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212165140) do
+ActiveRecord::Schema.define(version: 20180213021341) do
 
   create_table "books", force: :cascade do |t|
     t.string "book_name"
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20180212165140) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.integer "season_id"
     t.integer "episode_number"
     t.string "name"
     t.date "date"
