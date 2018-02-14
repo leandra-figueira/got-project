@@ -44,6 +44,7 @@ Character.destroy_all
 #   end
 # end
 
+# An API of Ice and Fire
 url = 'https://anapioficeandfire.com/api/books'
 uri = URI(url)
 response = Net::HTTP.get(uri)
@@ -53,16 +54,19 @@ parsed_book.each do |b|
   Book.create(
            book_name: b['name']
   )
+  # Get the array - of urls - for each character
   characters = b['characters']
+  # Get each character
   characters.each do |c|
     uri = URI(c)
     response = Net::HTTP.get(uri)
-    parsed_chars = JSON.parse(response)
+    parsed_characters = JSON.parse(response)
 
     Character.create(
-                 name: parsed_chars['aliases'][0]
+                 name: parsed_characters['aliases'][0]
     )
 
+    Book.Characterbook.create(Character: Character)
   end
 end
 # 10 books and 592 characters
