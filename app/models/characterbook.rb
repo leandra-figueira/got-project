@@ -1,0 +1,2 @@
+class Characterbook < ApplicationRecord
+end
