@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213021341) do
+ActiveRecord::Schema.define(version: 20180214163902) do
 
   create_table "books", force: :cascade do |t|
     t.string "book_name"
-    t.integer "character_book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,7 +27,6 @@ ActiveRecord::Schema.define(version: 20180213021341) do
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.string "house"
-    t.integer "character_book_id"
     t.integer "character_location_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
