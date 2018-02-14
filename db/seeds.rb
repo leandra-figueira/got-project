@@ -13,6 +13,8 @@
 #
 # Season.destroy_all
 # Episode.destroy_all
+Book.destroy_all
+Character.destroy_all
 #
 # parsed_season.each do |d|
 #   # inserting data on season table
@@ -42,15 +44,31 @@
 #   end
 # end
 
-books = GameOfThronesApi.get_books
+url = 'https://anapioficeandfire.com/api/books'
+uri = URI(url)
+response = Net::HTTP.get(uri)
+parsed_book = JSON.parse(response)
 
-books.each do |b|
-  Books.create(
-           name: b['aliases']
+# books = GameOfThronesApi.get_books
+# chars = GameOfThronesApi.get_characters
+
+parsed_book.each do |b|
+  Book.create(
+           book_name: b['name']
   )
+  characters = b['characters']
 
-  # characters = b|'characters'|
+  characters.each do |c|
+
+    uri = URI(c)
+    response = Net::HTTP.get(uri)
+    parsed_chars = JSON.parse(response)
+    Character.create(
+                 name: parsed_chars['aliases'][0]
+                 # house: chars['allegiances']
+    )
+  end
 end
 
 
-# puts "Seed generated #{} seasons and #{Episode.count} episodes"
+puts "Seed generated #{Book.count} books and #{Character.count} chars"
