@@ -1,3 +1,4 @@
 class Character < ApplicationRecord
-  has_and_belongs_to_many :books
+  has_many :characterbooks
+  has_many :books, through: :characterbooks
 end
