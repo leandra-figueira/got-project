@@ -49,26 +49,21 @@ uri = URI(url)
 response = Net::HTTP.get(uri)
 parsed_book = JSON.parse(response)
 
-# books = GameOfThronesApi.get_books
-# chars = GameOfThronesApi.get_characters
-
 parsed_book.each do |b|
   Book.create(
            book_name: b['name']
   )
   characters = b['characters']
-
   characters.each do |c|
-
     uri = URI(c)
     response = Net::HTTP.get(uri)
     parsed_chars = JSON.parse(response)
+
     Character.create(
                  name: parsed_chars['aliases'][0]
-                 # house: chars['allegiances']
     )
+
   end
 end
+# 10 books and 592 characters
 
-
-puts "Seed generated #{Book.count} books and #{Character.count} chars"
