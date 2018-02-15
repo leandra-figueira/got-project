@@ -15,7 +15,8 @@
 # Episode.destroy_all
 Book.destroy_all
 Character.destroy_all
-#
+Story.destroy_all
+
 # parsed_season.each do |d|
 #   # inserting data on season table
 #   Season.create(
@@ -51,7 +52,7 @@ response = Net::HTTP.get(uri)
 parsed_book = JSON.parse(response)
 
 parsed_book.each do |b|
-  Book.create(
+  book = Book.create(
            book_name: b['name']
   )
   # Get the array - of urls - for each character
@@ -62,11 +63,16 @@ parsed_book.each do |b|
     response = Net::HTTP.get(uri)
     parsed_characters = JSON.parse(response)
 
-    Character.create(
-                 name: parsed_characters['aliases'][0]
-    )
+    if (parsed_characters['name'] != "")
+      character = Character.find_by_name(parsed_characters['name'])
 
-    Book.Characterbook.create(Character: Character)
+      if (character == nil)
+        character = Character.create(
+                     name: parsed_characters['name']
+        )
+      end
+      book.stories.create(character: character)
+    end
   end
 end
 # 10 books and 592 characters
