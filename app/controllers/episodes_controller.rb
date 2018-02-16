@@ -4,7 +4,8 @@ class EpisodesController < ApplicationController
   # GET /episodes
   # GET /episodes.json
   def index
-    @episodes = Episode.all
+    # @episodes = Episode.all
+    @episode = Episode.order(:name).page params[:page]
   end
 
   # GET /episodes/1

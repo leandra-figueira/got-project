@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @episodes.each do |episode| %>
+    <% @episode.each do |episode| %>
       <tr>
         <td><%= episode.season_id %></td>
         <td><%= episode.episode_number %></td>
@@ -29,7 +29,8 @@
     <% end %>
   </tbody>
 </table>
-
+<hr>
+<%= paginate @episode %>
 <br>
 
 <%= link_to 'New Episode', new_episode_path %>
