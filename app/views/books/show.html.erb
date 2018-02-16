@@ -5,10 +5,22 @@
   <%= @book.book_name %>
 </p>
 
-<p>
-  <strong>Character book:</strong>
-  <%= @book.character_book_id %>
-</p>
+<strong>Characters on this book:</strong>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @book.characters.each do |character| %>
+    <tr>
+      <td><%= character.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

@@ -10,15 +10,16 @@
   <%= @character.house %>
 </p>
 
-<p>
-  <strong>Character book:</strong>
-  <%= @character.character_book_id %>
-</p>
-
-<p>
-  <strong>Character location:</strong>
-  <%= @character.character_location_id %>
-</p>
+<strong>Books where this character is present:</strong>
+<table>
+  <tbody>
+  <% @character.books.each do |book| %>
+    <tr>
+      <td><%= book.book_name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_character_path(@character) %> |
 <%= link_to 'Back', characters_path %>
