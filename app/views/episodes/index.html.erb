@@ -1,5 +1,19 @@
 <p id="notice"><%= notice %></p>
 
+Search Form: <br>
+<%= search_form_for @search do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= c.attribute_fields do |a| %>
+      <%= a.attribute_select %>
+    <% end %>
+    <%= c.predicate_select only: [:cont, :lteq, :gteq]%>
+    <%= c.value_fields do |v| %>
+      <%= v.text_field :value %>
+    <%end %>
+  <%end %>
+  <%= f.submit %>
+<% end %>
+
 <h1>Episodes</h1>
 
 <table>
