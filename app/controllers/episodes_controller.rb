@@ -5,8 +5,8 @@ class EpisodesController < ApplicationController
   # GET /episodes.json
   def index
     # @episodes = Episode.all
-    # @episode = Episode.order(:name).page params[:page]
     @search = Episode.ransack(params[:q])
+    # his handles the search and the pagination
     @episode = @search.result.page params[:page]
     @search.build_condition
 

@@ -19,6 +19,21 @@
   <strong>Summary:</strong>
   <%= raw @season.summary %>
 </p>
+<strong>Episodes of this season:</strong>
+<table>
+  <thead>
+  <tr>
+    <th>Episode number</th>
+    <th>Episode Name</th>
+  </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_season_path(@season) %> |
-<%= link_to 'Back', seasons_path %>
+  <tbody>
+  <% @season.episodes.each do |episode| %>
+    <tr>
+      <td><%= episode.episode_number %></td>
+      <td><%= episode.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

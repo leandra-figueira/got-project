@@ -2,7 +2,12 @@
 
 <p>
   <strong>Season:</strong>
-  <%= @episode.season_number %>
+  <%= @episode.season.season_number %>
+</p>
+
+<p>
+  <strong>Season summary:</strong>
+  <%= raw @episode.season.summary %>
 </p>
 
 <p>
@@ -22,7 +27,7 @@
 
 <p>
   <strong>Summary:</strong>
-  <%= @episode.summary %>
+  <%= raw @episode.summary %>
 </p>
 
 <%= link_to 'Edit', edit_episode_path(@episode) %> |

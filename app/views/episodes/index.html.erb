@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
-
-Search Form: <br>
+<hr>
+<h1>Episodes</h1>
+<h6>Search Form: </h6>
+<br>
 <%= search_form_for @search do |f| %>
   <%= f.condition_fields do |c| %>
     <%= c.attribute_fields do |a| %>
@@ -13,8 +15,7 @@ Search Form: <br>
   <%end %>
   <%= f.submit %>
 <% end %>
-
-<h1>Episodes</h1>
+<hr>
 
 <table>
   <thead>
@@ -31,7 +32,7 @@ Search Form: <br>
   <tbody>
     <% @episode.each do |episode| %>
       <tr>
-        <td><%= episode.season_id %></td>
+        <td><%= episode.season.season_number %></td>
         <td><%= episode.episode_number %></td>
         <td><%= episode.name %></td>
         <td><%= episode.date %></td>

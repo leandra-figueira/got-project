@@ -4,8 +4,13 @@ class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+    # @characters = Character.all
+    @search = Character.ransack(params[:q])
+    # his handles the search and the pagination
+    @character = @search.result.page params[:page]
+    @search.build_condition
   end
+
 
   # GET /characters/1
   # GET /characters/1.json
