@@ -19,7 +19,8 @@
         <td><%= season.season_number %></td>
         <td><%= season.premiere_date %></td>
         <td><%= season.end_date %></td>
-        <td><%= season.summary %></td>
+        <!--To prevent rails of sanitizing the data, use raw in front of the variable-->
+        <td><%= raw season.summary %></td>
         <td><%= link_to 'Show', season %></td>
         <td><%= link_to 'Edit', edit_season_path(season) %></td>
         <td><%= link_to 'Destroy', season, method: :delete, data: { confirm: 'Are you sure?' } %></td>
